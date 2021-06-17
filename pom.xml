@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.taller1.CristianLasso</groupId>
-	<artifactId>CI-211-Taller3-LassoHernandez</artifactId>
+	<artifactId>CI-211-Taller4-OcampoTorres-LassoHernandez</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>taller2</name>
 	<description>Spring Boot Project for Workshop1</description>
