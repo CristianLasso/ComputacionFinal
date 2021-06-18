@@ -26,10 +26,12 @@ public class Symptom implements Serializable {
 	@Column(name="SYMP_ID")
 	private long sympId;
 
+	@NotNull(groups = SymptomValidation.class)
+	@Size(min = 1, max = 1, groups = SymptomValidation.class)
 	@Column(name="SYMP_ISACTIVE")
 	private String sympIsactive;
 
-	@NotNull(groups = {AutotransitionValidation.class})
+	@NotNull(groups = {SymptomValidation.class})
 	@Size(min = 4, max = 30, groups = { SymptomValidation.class})
 	@Column(name="SYMP_NAME")
 	private String sympName;

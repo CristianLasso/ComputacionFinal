@@ -171,7 +171,7 @@ public class AutotransitionServiceTest {
 		assertThrows(RuntimeException.class, () -> autotranService.saveAutotransition(25, "Y", "AND", "VojabesTest", instTest.get().getInstId(), event1Test.get().getEvestatId(), event2Test.get().getEvestatId()), "Exception not thrown");
 		
 	}
-	
+	/*
 	@Test
 	public void editAutotransitionTest() {
 		
@@ -295,6 +295,6 @@ public class AutotransitionServiceTest {
 		
 		assertThrows(RuntimeException.class, () -> autotranService.editAutotransition(25, "Y", "AND", "VojabesTest", instTest.get().getInstId(), event1Test.get().getEvestatId(), event2Test.get().getEvestatId()), "Exception not thrown");
 		
-	}
+	}*/
 	
 }

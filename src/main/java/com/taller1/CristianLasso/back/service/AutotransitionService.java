@@ -9,9 +9,7 @@ public interface AutotransitionService {
 			String autotranLogicaloperand, String autotranName, long instId, 
 			long event1Id, long event2Id);
 	
-	public Autotransition editAutotransition(long autotranId, String autotranIsactive, 
-			String autotranLogicaloperand, String autotranName, long instId, 
-			long event1Id, long event2Id);
+	public Autotransition editAutotransition(Autotransition autotransition);
 	
 	public Iterable<Autotransition> findAll();
 	

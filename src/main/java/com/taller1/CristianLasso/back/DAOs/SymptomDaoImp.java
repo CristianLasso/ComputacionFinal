@@ -46,7 +46,7 @@ public class SymptomDaoImp implements SymptomDao {
 	@Transactional
 	public List<Symptom> findAll() {
 		// TODO Auto-generated method stub
-		String consulta= "SELECT a FROM Autotransition a";
+		String consulta= "SELECT s FROM Symptom s";
 		return entityManager.createQuery(consulta).getResultList();
 	}
 

@@ -21,15 +21,15 @@
 		<div class="row">
 			<div class="col-md-6">
 				<form action="#"
-					th:action="@{/user/symptom/edit/{id}(id=${Symptom.sympId})}"
-					th:object="${Symptom}" method="post">
+					th:action="@{/user/symptom/edit/{id}(id=${symptom.sympId})}"
+					th:object="${symptom}" method="post">
 					<div class="row">
 						
 						<div class="form-group col-md-6">
 							
 							<label for="name" class="col-form-label">Name</label> <input
 								th:field="*{sympName}" class="form-control" id="name"
-								placeholder="name" th:value="${Symptom.sympName}">
+								placeholder="name" th:value="${symptom.sympName}">
 							<span th:if="${#fields.hasErrors('sympName')}"
 								th:errors="*{sympName}" class="text-danger"></span>
 						</div>
@@ -37,7 +37,7 @@
 							<label for="isactive" class="col-form-label">Is active</label> <input
 								th:field="*{sympIsactive}" class="form-control"
 								id="sympIsactive" placeholder="sympIsactive"
-								th:value="Symptom.sympIsactive"> <span
+								th:value="symptom.sympIsactive"> <span
 								th:if="${#fields.hasErrors('sympIsactive')}"
 								th:errors="*{sympIsactive}" class="text-danger"></span>
 						</div>

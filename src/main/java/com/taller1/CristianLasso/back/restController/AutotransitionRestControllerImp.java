@@ -39,12 +39,13 @@ public class AutotransitionRestControllerImp {
 		autotranService.save(autotransition);
 	}
 
-	@PutMapping("/edit/")
+	@PutMapping
 	public void updateUser(@RequestBody Autotransition autotransition) {
-		autotranService.edit(autotransition);
+		Autotransition autotran = autotranService.findById(autotransition.getAutotranId());
+		autotranService.editAutotransition(autotran);
 	}
 
-	@DeleteMapping("/del/{id}")
+	@DeleteMapping("/{id}")
 	public void deleteUser(@PathVariable("id") long id) {
 		Autotransition autotran = autotranService.findById(id);
 		autotranService.delete(autotran);

@@ -64,42 +64,18 @@ public class AutotransitionServiceImp implements AutotransitionService{
 	}
 
 	@Override
-	public Autotransition editAutotransition(long autotranId, String autotranIsactive, String autotranLogicaloperand, 
-			String autotranName, long instId, long event1Id, long event2Id) throws RuntimeException {
-		if (autotranName.equalsIgnoreCase("")) {
-			throw new RuntimeException();
-		}
+	public Autotransition editAutotransition(Autotransition autotransition) throws RuntimeException {
 		
-		if (!(autotranIsactive.equalsIgnoreCase("Y") || autotranIsactive.equalsIgnoreCase("N"))) {
-			throw new RuntimeException();
-		}
-		
-		if (!(autotranLogicaloperand.equalsIgnoreCase("OR") || autotranLogicaloperand.equalsIgnoreCase("AND"))) {
-			throw new RuntimeException();
-		}
-		
-		if (instRepo.findById(instId).isEmpty()) {
-			throw new RuntimeException();
-		}
-		
-		if (eventRepo.findById(event1Id).isEmpty() || eventRepo.findById(event2Id).isEmpty()) {
-			throw new RuntimeException();
-		}
-		
-		
-		Eventstatus event1 = eventRepo.findById(event1Id).get();
-		Eventstatus event2 = eventRepo.findById(event2Id).get();
-		
-		Autotransition newAuto = autotranDao.findById(autotranId).get();
+		Autotransition newAuto = new Autotransition();
 
-		newAuto.setAutotranIsactive(autotranIsactive);
-		newAuto.setAutotranLogicaloperand(autotranLogicaloperand);
-		newAuto.setAutotranName(autotranName);
-		newAuto.setInstInstId(instId);
-		newAuto.setEventstatus1(event1);
-		newAuto.setEventstatus2(event2);
+		newAuto.setAutotranIsactive(autotransition.getAutotranIsactive());
+		newAuto.setAutotranLogicaloperand(autotransition.getAutotranLogicaloperand());
+		newAuto.setAutotranName(autotransition.getAutotranName());
+		newAuto.setInstInstId(autotransition.getInstInstId());
+		newAuto.setEventstatus1(autotransition.getEventstatus1());
+		newAuto.setEventstatus2(autotransition.getEventstatus2());
 		
-		autotranDao.delete(newAuto);
+		autotranDao.delete(autotransition);
 		autotranDao.save(newAuto);
 		return newAuto;
 	}
