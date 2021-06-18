@@ -41,10 +41,10 @@
 								<td th:text="${localcondition.loconOperator}"></td>
 								
 								<td><a
-									th:href="@{/user/localcondition/showPrecondition/{id}(id=${localcondition.precondition})}">Precondition
+									th:href="@{/user/localcondition/showPrecondition/{id}(id=${localcondition.loconId})}">Precondition
 								</a></td>
 								<td><a
-									th:href="@{/user/localcondition/showThreshold/{id}(id=${localcondition.threshold})}">Threshold
+									th:href="@{/user/localcondition/showThreshold/{id}(id=${localcondition.loconId})}">Threshold
 								</a></td>
 								
 								<td><a th:href="@{/user/localcondition/edit/{id}(id=${localcondition.loconId})}"

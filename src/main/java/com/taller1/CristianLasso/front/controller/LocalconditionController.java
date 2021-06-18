@@ -104,7 +104,7 @@ public class LocalconditionController {
 		Precondition precon = localcon.getPrecondition();
         ArrayList<Precondition> precons = new ArrayList<Precondition>();
         precons.add(precon);
-        model.addAttribute("precondition", precons);
+        model.addAttribute("precondition", businessDel.preconFinById(localcon.getLoconId()));
         return "/precondition/index";
     }
 	
@@ -114,7 +114,7 @@ public class LocalconditionController {
 		Threshold thres = localcon.getThreshold();
         ArrayList<Threshold> threses = new ArrayList<Threshold>();
         threses.add(thres);
-        model.addAttribute("threshold", threses);
+        model.addAttribute("threshold", businessDel.thresFinById(localcon.getLoconId()));
         return "/threshold/index";
     }
 	

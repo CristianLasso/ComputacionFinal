@@ -26,6 +26,16 @@ public class Precondition implements Serializable {
 	private List<Localcondition> localconditions;
 
 	private Autotransition autotransition;
+	
+	private long autotranId;
+
+	public long getAutotranId() {
+		return autotranId;
+	}
+
+	public void setAutotranId(long autotranId) {
+		this.autotranId = autotranId;
+	}
 
 	public Precondition() {
 	}

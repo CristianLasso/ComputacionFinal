@@ -95,11 +95,11 @@ public class PreconditionController {
 	@GetMapping("/precondition/showAutotransition/{id}")
     public String showAutotransition(@PathVariable("id") long id, Model model) {
 		Precondition precon = businessDel.preconFinById(id).get();
-		Autotransition autotran = precon.getAutotransition();
+		Autotransition autotran = new Autotransition();
         ArrayList<Autotransition> autos = new ArrayList<Autotransition>();
         autos.add(autotran);
-        model.addAttribute("autotransition", autos);
-        return "/precondition/index";
+        model.addAttribute("autotransition", businessDel.autotranFinById(precon.getPreconId()));
+        return "/autotransition/index";
     }
 
 }
