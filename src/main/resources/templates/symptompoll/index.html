@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-	<div class="container my-5" th:switch="${#lists.size(Symptompoll)}">
+	<div class="container my-5" th:switch="${#lists.size(symptompoll)}">
 		<div class="row">
 			<div class="col-md-10">
 				<h2 th:case="0">La pagina se encuentra vacia</h2>
@@ -41,10 +41,10 @@
 								<td th:text="${symppoll.sympollEnddate}"></td>
 								<td th:text="${symppoll.sympollStartdate}"></td>
 								
-								<td><a th:href="@{/user/Symptompoll/edit/{id}(id=${symppoll.symppollId})}"
+								<td><a th:href="@{/user/symptompoll/edit/{id}(id=${symppoll.symppollId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
-								<td><a th:href="@{/user/Symptompoll/del/{id}(id=${symppoll.symppollId})}"
+								<td><a th:href="@{/user/symptompoll/del/{id}(id=${symppoll.symppollId})}"
 									class="btn btn-primary"> <i class="fas fa-user-times"></i>
 								</a></td>
 							</tr>
@@ -52,7 +52,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-					<a href="/user/Symptompoll/add-Symptompoll" class="btn btn-primary"><i
+					<a href="/user/symptompoll/add-Symptompoll" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>

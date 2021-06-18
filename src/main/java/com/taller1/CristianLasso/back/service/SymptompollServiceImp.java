@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.taller1.CristianLasso.back.DAOs.SymptompollDao;
+import com.taller1.CristianLasso.back.model.Symptom;
 import com.taller1.CristianLasso.back.model.Symptompoll;
 import com.taller1.CristianLasso.back.repository.FevInstitutionRepository;
 
@@ -72,6 +73,11 @@ public class SymptompollServiceImp implements SymptompollService{
 		// TODO Auto-generated method stub
 		symptompollDao.save(symptompoll);
 		
+	}
+	
+	@Override
+	public void update(Symptompoll symptom) {
+		symptompollDao.update(symptom);
 	}
 
 	@Override

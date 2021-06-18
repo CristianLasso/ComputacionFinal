@@ -18,6 +18,8 @@ public interface SymptompollService {
 	
 	public void save(Symptompoll symptompoll);
 	
+	public void update(Symptompoll symptom);
+	
 	public void delete(Symptompoll symptompoll);
 	
 	public Symptompoll findById(long id);
