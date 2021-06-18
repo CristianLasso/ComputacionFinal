@@ -39,7 +39,7 @@ public class AutotransitionRestControllerImp {
 		autotranService.save(autotransition);
 	}
 
-	@PutMapping
+	@PutMapping("/edit/")
 	public void updateUser(@RequestBody Autotransition autotransition) {
 		autotranService.edit(autotransition);
 	}

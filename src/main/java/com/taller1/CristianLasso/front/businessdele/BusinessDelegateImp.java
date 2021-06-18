@@ -54,7 +54,7 @@ public class BusinessDelegateImp implements BusinessDelegate{
 	
 	@Override
 	public void autotranEdit(Autotransition autotran) {
-		String url = URL + "/autotransition/";
+		String url = URL + "/autotransition/edit/";
 		rest.put(url, autotran, Autotransition.class);
 	}
 	
