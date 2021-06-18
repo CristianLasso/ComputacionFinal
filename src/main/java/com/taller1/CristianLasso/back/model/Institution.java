@@ -103,6 +103,8 @@ public class Institution implements Serializable {
 	@OneToMany(mappedBy = "institution")
 	private List<Person> persons;
 
+	
+	// 
 	// bi-directional many-to-one association to Physicalspacetype
 	@OneToMany(mappedBy = "institution")
 	private List<Physicalspacetype> physicalspacetypes;

@@ -34,7 +34,8 @@ public class Symptom implements Serializable {
 	@OneToMany(mappedBy="symptom")
 	private List<Symptomquestion> symptomquestions;
 
-	public Symptom() {
+	public Symptom(){
+		
 	}
 
 	public long getSympId() {

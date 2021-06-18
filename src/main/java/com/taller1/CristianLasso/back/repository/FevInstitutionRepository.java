@@ -7,5 +7,5 @@ import com.taller1.CristianLasso.back.model.FevInstitution;
 
 @Repository
 public interface FevInstitutionRepository extends CrudRepository<FevInstitution, Long>{
-
+	
 }
