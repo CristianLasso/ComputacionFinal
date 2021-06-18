@@ -27,6 +27,7 @@ public class SymptompollDaoImp implements SymptompollDao {
 	}
 
 	@Override
+	@Transactional
 	public Symptompoll update(Symptompoll Symptompoll) {
 		// TODO Auto-generated method stub
 		entityManager.merge(Symptompoll);
@@ -34,12 +35,14 @@ public class SymptompollDaoImp implements SymptompollDao {
 	}
 
 	@Override
+	@Transactional
 	public void delete(Symptompoll Symptompoll) {
 		// TODO Auto-generated method stub
 		entityManager.remove(Symptompoll);
 	}
 
 	@Override
+	@Transactional
 	public List<Symptompoll> findAll() {
 		// TODO Auto-generated method stub
 		String consulta= "SELECT s FROM Symptompoll s";
@@ -47,6 +50,7 @@ public class SymptompollDaoImp implements SymptompollDao {
 	}
 
 	@Override
+	@Transactional
 	public Symptompoll findById(long sympollId) {
 		// TODO Auto-generated method stub
 		return entityManager.find(Symptompoll.class, sympollId);

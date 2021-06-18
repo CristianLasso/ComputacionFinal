@@ -51,6 +51,7 @@ public class SymptompollRestControllerImp {
 	@DeleteMapping("/del/{id}")
 	public void deleteUser(@PathVariable("id") long id) {
 		Symptompoll autotran = symppollService.findById(id);
+		System.out.println(autotran.getSympollName());
 		symppollService.delete(autotran);
 	}
 	

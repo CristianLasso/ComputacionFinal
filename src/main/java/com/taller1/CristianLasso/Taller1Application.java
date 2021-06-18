@@ -1,5 +1,7 @@
 package com.taller1.CristianLasso;
 
+import java.math.BigDecimal;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -101,6 +103,10 @@ public class Taller1Application {
 			
 			Symptomquestion sympques = new Symptomquestion();
 			sympques.setSympquesName("Sympques");
+			sympques.setSympquesIsactive("N");
+			sympques.setSympquesActivationanswer("final");
+			BigDecimal decimal = new BigDecimal(80);
+			sympques.setSympquesWeight(decimal);
 			symptomquestionService.save(sympques);
 		};
 	}

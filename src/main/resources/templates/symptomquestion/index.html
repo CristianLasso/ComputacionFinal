@@ -39,12 +39,8 @@
 								<td th:text="${symptomques.sympquesId}"></td>
 								<td th:text="${symptomques.sympquesName}"></td>
 								<td th:text="${symptomques.sympquesActivationanswer}"></td>
-								<td th:text="${symptomquestion.sympquesIsactive}"></td>
-								<td th:text="${symptomquestion.sympquesWeight}"></td>
-								
-								<td><a
-									th:href="@{/user/symptomquestion/showInstitution/{id}(id=${symptomques.sympquesId})}">Institution
-								</a></td>
+								<td th:text="${symptomques.sympquesIsactive}"></td>
+								<td th:text="${symptomques.sympquesWeight}"></td>
 								
 								<td><a th:href="@{/user/symptomquestion/edit/{id}(id=${symptomques.sympquesId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>

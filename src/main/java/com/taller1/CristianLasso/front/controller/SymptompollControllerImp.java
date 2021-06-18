@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.taller1.CristianLasso.front.model.Symptom;
 import com.taller1.CristianLasso.front.model.Symptompoll;
-import com.taller1.CristianLasso.back.validation.AutotransitionValidation;
 import com.taller1.CristianLasso.back.validation.SymptomValidation;
+import com.taller1.CristianLasso.back.validation.SymptompollValidation;
 import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 
 @Controller
@@ -66,7 +66,7 @@ public class SymptompollControllerImp {
 	@PostMapping("/symptompoll/edit/{id}")
 	public String updateSymptompoll(@PathVariable("id") long id,
 			@RequestParam(value = "action", required = true) String action,
-			@Validated(SymptomValidation.class) Symptompoll symptompoll, BindingResult bindingResult, Model model) {
+			@Validated(SymptompollValidation.class) Symptompoll symptompoll, BindingResult bindingResult, Model model) {
 		if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("symptompoll", symptompoll);
@@ -79,7 +79,7 @@ public class SymptompollControllerImp {
 
 	@GetMapping("/symptompoll/del/{id}")
 	public String deleteSymptompoll(@PathVariable("id") long id, Model model) {
-		businessDel.symptomDelete(id);
+		businessDel.symptompollDelete(id);
 		return "redirect:/user/symptompoll/";
 	}
 	

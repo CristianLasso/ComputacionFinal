@@ -28,23 +28,23 @@
 						<div class="form-group col-md-6">
 							<label for="name" class="col-form-label">Name</label> <input
 								th:field="*{sympquesName}" class="form-control" id="name"
-								placeholder="name" th:value="${Symppoll.sympquesName}">
+								placeholder="name" th:value="${symptomquestion.sympquesName}">
 							<span th:if="${#fields.hasErrors('sympquesName')}"
 								th:errors="*{sympquesName}" class="text-danger"></span>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="isactive" class="col-form-label">Is active</label> <input
-								th:field="*{symppollIsactive}" class="form-control"
-								id="symppollIsactive" placeholder="symppollIsactive"
-								th:value="Symppoll.symppollIsactive"> <span
-								th:if="${#fields.hasErrors('symppollIsactive')}"
-								th:errors="*{symppollIsactive}" class="text-danger"></span>
+								th:field="*{sympquesIsactive}" class="form-control"
+								id="sympquesIsactive" placeholder="sympquesIsactive"
+								th:value="symptomquestion.sympquesIsactive"> <span
+								th:if="${#fields.hasErrors('sympquesIsactive')}"
+								th:errors="*{sympquesIsactive}" class="text-danger"></span>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="sympquesActivationanswer" class="col-form-label">Activation Answer</label> 
 							<input th:field="*{sympquesActivationanswer}"
 								class="form-control" id="sympquesActivationanswer"
-								placeholder="Logical operand"
+								placeholder="sympquesActivationanswer"
 								th:value="Symppoll.sympquesActivationanswer"> <span
 								th:if="${#fields.hasErrors('sympquesActivationanswer')}"
 								th:errors="*{sympquesActivationanswer}" class="text-danger"></span>

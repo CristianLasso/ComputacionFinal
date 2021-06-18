@@ -72,7 +72,6 @@ public class SymptompollServiceImp implements SymptompollService{
 	public void save(Symptompoll symptompoll) {
 		// TODO Auto-generated method stub
 		symptompollDao.save(symptompoll);
-		
 	}
 	
 	@Override

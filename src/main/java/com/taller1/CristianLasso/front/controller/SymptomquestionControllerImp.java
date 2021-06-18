@@ -31,7 +31,7 @@ public class SymptomquestionControllerImp {
 
 	@GetMapping("/symptomquestion/")
 	public String indexSymptomquestion(Model model) {
-		model.addAttribute("symptomquestion", businessDel.symptomFindAll());
+		model.addAttribute("symptomquestion", businessDel.symptomquestionFindAll());
 		return "/symptomquestion/index";
 	}
 
