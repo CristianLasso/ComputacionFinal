@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.taller1.CristianLasso.back.model.Symptompoll;
 import com.taller1.CristianLasso.back.model.Symptomquestion;
@@ -22,6 +23,7 @@ public class SymptomquestionDaoImp implements SymptomquestionDao{
 	private EntityManager entityManager;
 	
 	@Override
+	@Transactional
 	public Symptomquestion save(Symptomquestion Symptomquestion) {
 		// TODO Auto-generated method stub
 		entityManager.persist(Symptomquestion);
@@ -29,6 +31,7 @@ public class SymptomquestionDaoImp implements SymptomquestionDao{
 	}
 
 	@Override
+	@Transactional
 	public Symptomquestion update(Symptomquestion Symptomquestion) {
 		// TODO Auto-generated method stub
 		entityManager.merge(Symptomquestion);
@@ -36,6 +39,7 @@ public class SymptomquestionDaoImp implements SymptomquestionDao{
 	}
 
 	@Override
+	@Transactional
 	public void delete(Symptomquestion Symptomquestion) {
 		// TODO Auto-generated method stub
 		entityManager.remove(Symptomquestion);
@@ -43,12 +47,14 @@ public class SymptomquestionDaoImp implements SymptomquestionDao{
 	}
 
 	@Override
+	@Transactional
 	public List<Symptomquestion> findAll() {
 		String jpql = "SELECT s FROM Symptomquestion s";
 		return entityManager.createQuery(jpql).getResultList();
 	}
 
 	@Override
+	@Transactional
 	public Symptomquestion findById(long id) {
 		// TODO Auto-generated method stub
 		

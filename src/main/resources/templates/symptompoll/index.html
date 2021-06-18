@@ -27,8 +27,6 @@
 							<tr>
 								<th>ID</th>
 								<th>Name</th>
-								<th>End Date</th>
-								<th>Start Date</th>
 								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
@@ -37,12 +35,8 @@
 							<tr th:each="symppoll : ${symptompoll}" th:value="${symptompoll}">
 								<td th:text="${symppoll.sympollId}"></td>
 								<td th:text="${symppoll.sympollName}"></td>
-								<td th:text="${symppoll.sympollEnddate}"></td>
-								<td th:text="${symppoll.sympollStartdate}"></td>
 								
-								<td><a
-									th:href="@{/user/symptompoll/showInstitution/{id}(id=${symppoll.instInstId})}">Institution
-								</a></td>
+								
 								
 								<td><a th:href="@{/user/symptompoll/edit/{id}(id=${symppoll.sympollId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>

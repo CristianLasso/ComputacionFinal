@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Edit Symptomquestion</title>
+<title>Edit Symptompoll</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="container my-5">
-		<h2 class="mb-5">Edit Symptomquestion</h2>
+		<h2 class="mb-5">Edit Symptompoll</h2>
 		<div class="row">
 			<div class="col-md-6">
 				<form action="#"
@@ -33,22 +33,7 @@
 							<span th:if="${#fields.hasErrors('sympollName')}"
 								th:errors="*{sympollName}" class="text-danger"></span>
 						</div>
-						<div class="form-group col-md-6">
-							<label for="enddate" class="col-form-label">End Date</label> <input
-								th:field="*{sympollEnddate}" class="form-control"
-								id="sympollEnddate" placeholder="sympollEnddate"
-								th:value="symptompoll.sympollEnddate"> <span
-								th:if="${#fields.hasErrors('sympollEnddate')}"
-								th:errors="*{sympollEnddate}" class="text-danger"></span>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="startdate" class="col-form-label">Start Date</label> <input
-								th:field="*{sympollStartdate}" class="form-control"
-								id="sympollStartdate" placeholder="sympollStartdate"
-								th:value="symptompoll.sympIsactive"> <span
-								th:if="${#fields.hasErrors('sympollStartdate')}"
-								th:errors="*{sympollStartdate}" class="text-danger"></span>
-						</div>
+						
 					
 						<div></div>
 					</div>
