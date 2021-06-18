@@ -98,7 +98,7 @@ public class PreconditionController {
 		Autotransition autotran = new Autotransition();
         ArrayList<Autotransition> autos = new ArrayList<Autotransition>();
         autos.add(autotran);
-        model.addAttribute("autotransition", businessDel.autotranFinById(precon.getPreconId()));
+        model.addAttribute("autotransition", businessDel.autotranFinById(1));
         return "/autotransition/index";
     }
 
