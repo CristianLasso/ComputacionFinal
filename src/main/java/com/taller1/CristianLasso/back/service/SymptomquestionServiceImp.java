@@ -75,7 +75,7 @@ public class SymptomquestionServiceImp implements SymptomquestionService{
 
 
 	@Override
-	public List<Symptomquestion> findAll() {
+	public Iterable<Symptomquestion> findAll() {
 		// TODO Auto-generated method stub
 		return symptomquestionDao.findAll();
 	}
@@ -85,6 +85,13 @@ public class SymptomquestionServiceImp implements SymptomquestionService{
 	public Symptomquestion findById(long sympollId) {
 		// TODO Auto-generated method stub
 		return symptomquestionDao.findById(sympollId);
+	}
+
+
+	@Override
+	public void update(Symptomquestion Symptomquestion) {
+		// TODO Auto-generated method stub
+		symptomquestionDao.update(Symptomquestion);
 	}
 
 

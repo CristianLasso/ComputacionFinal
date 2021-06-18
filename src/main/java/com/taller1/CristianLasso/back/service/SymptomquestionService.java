@@ -22,9 +22,9 @@ public interface SymptomquestionService {
 
 	
 	public void save(Symptomquestion Symptomquestion);
-
+	public void update(Symptomquestion Symptomquestion);
 	public void delete(Symptomquestion Symptomquestion);
-	public List<Symptomquestion> findAll();
+	public Iterable<Symptomquestion> findAll();
 	public Symptomquestion findById(long sympollId);
 	
 	
