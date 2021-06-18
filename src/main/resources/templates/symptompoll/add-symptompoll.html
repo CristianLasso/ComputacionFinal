@@ -3,11 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<<<<<<< HEAD
-<title>Add Symptompoll</title>
-=======
 <title>Add Symptomquestion</title>
->>>>>>> c2884e31a2e37975d7839694e70e448de32bee26
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -21,74 +17,37 @@
 </head>
 <body>
 	<div class="container my-5">
-<<<<<<< HEAD
-		<h2 class="mb-5">Add Symptompoll</h2>
-		<div class="row">
-			<div class="col-md-6">
-				<form action="#" th:action="@{/user/symptompoll/add-symptompoll/}"
-					th:object="${Symptompoll}" method="post">
-=======
 		<h2 class="mb-5">Add Symptomquestion</h2>
 		<div class="row">
 			<div class="col-md-6">
-				<form action="#" th:action="@{/user/symptomquestion/add-symptomquestion/}"
-					th:object="${symptomquestion}" method="post">
->>>>>>> c2884e31a2e37975d7839694e70e448de32bee26
+				<form action="#" th:action="@{/user/symptompoll/add-symptompoll/}"
+					th:object="${symptompoll}" method="post">
 					<div class="row">
 					
 						<div class="form-group col-md-6">
 							<label for="name" class="col-form-label">Name</label> <input
-<<<<<<< HEAD
-								th:field="*{symppollName}" class="form-control" id="name"
+								th:field="*{sympollName}" class="form-control" id="name"
 								placeholder="name"> <span
-								th:if="${#fields.hasErrors('symppollName')}"
-								th:errors="*{symppollName}" class="text-danger"></span>
+								th:if="${#fields.hasErrors('sympollName')}"
+								th:errors="*{sympollName}" class="text-danger"></span>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="symppollEnddate" class="col-form-label">End 
-								Date</label> <input th:field="*{symppollEnddate}"
-								class="form-control" id="symppollEnddate"
+							<label for="enddate" class="col-form-label">End Date</label> <input
+								th:field="*{sympollName}" class="form-control"
+								id="sympollName" placeholder=""> <span
+								th:if="${#fields.hasErrors('sympollName')}"
+								th:errors="*{sympollName}" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="startdate" class="col-form-label">Start 
+								Date</label> <input th:field="*{sympollEnddate}"
+								class="form-control" id="sympollEnddate"
 								placeholder="Logical operand"> <span
-								th:if="${#fields.hasErrors('symppollEnddate')}"
-								th:errors="*{symppollEnddate}" class="text-danger"></span>
+								th:if="${#fields.hasErrors('sympollEnddate')}"
+								th:errors="*{sympollEnddate}" class="text-danger"></span>
 						</div>
-						<div class="form-group col-md-6">
-							<label for="symppollStartdate" class="col-form-label">Start 
-								Date</label> <input th:field="*{symppollStartdate}"
-								class="form-control" id="symppollStartdate"
-								placeholder="Logical operand"> <span
-								th:if="${#fields.hasErrors('symppollStartdate')}"
-								th:errors="*{symppollStartdate}" class="text-danger"></span>
-=======
-								th:field="*{sympquesName}" class="form-control" id="name"
-								placeholder="name"> <span
-								th:if="${#fields.hasErrors('sympquesName')}"
-								th:errors="*{sympquesName}" class="text-danger"></span>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="isactive" class="col-form-label">Is active</label> <input
-								th:field="*{sympquesIsactive}" class="form-control"
-								id="sympquesIsactive" placeholder=""> <span
-								th:if="${#fields.hasErrors('sympquesIsactive')}"
-								th:errors="*{sympquesIsactive}" class="text-danger"></span>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="sympquesActivationanswer" class="col-form-label">Activation 
-								Answer</label> <input th:field="*{sympquesActivationanswer}"
-								class="form-control" id="sympquesActivationanswer"
-								placeholder="Logical operand"> <span
-								th:if="${#fields.hasErrors('sympquesActivationanswer')}"
-								th:errors="*{sympquesActivationanswer}" class="text-danger"></span>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="sympquesWeight" class="col-form-label">Weight 
-								</label> <input th:field="*{sympquesWeight}"
-								class="form-control" id="sympquesWeight"
-								placeholder="Logical operand"> <span
-								th:if="${#fields.hasErrors('sympquesWeight')}"
-								th:errors="*{sympquesWeight}" class="text-danger"></span>
->>>>>>> c2884e31a2e37975d7839694e70e448de32bee26
-						</div>
+
+						
 
 
 						<div></div>

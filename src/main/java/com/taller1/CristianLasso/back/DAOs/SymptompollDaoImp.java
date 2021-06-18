@@ -42,7 +42,8 @@ public class SymptompollDaoImp implements SymptompollDao {
 	@Override
 	public List<Symptompoll> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		String consulta= "SELECT s FROM Symptompoll s";
+		return entityManager.createQuery(consulta).getResultList();
 	}
 
 	@Override

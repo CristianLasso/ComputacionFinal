@@ -44,7 +44,7 @@ public class SymptomquestionDaoImp implements SymptomquestionDao{
 
 	@Override
 	public List<Symptomquestion> findAll() {
-		String jpql = "SELECT a FROM CheckMeasur a";
+		String jpql = "SELECT s FROM Symptomquestion s";
 		return entityManager.createQuery(jpql).getResultList();
 	}
 

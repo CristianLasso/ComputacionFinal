@@ -27,7 +27,6 @@
 							<tr>
 								<th>ID</th>
 								<th>Name</th>
-								<th>Is Active</th>
 								<th>End Date</th>
 								<th>Start Date</th>
 								<th>Edit</th>
@@ -35,17 +34,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="symppoll : ${symptompoll}" th:value="${Symptompoll}">
-								<td th:text="${symppoll.symppollId}"></td>
-								<td th:text="${symppoll.symppollName}"></td>
-								<td th:text="${symppoll.symppollIsactive}"></td>
+							<tr th:each="symppoll : ${symptompoll}" th:value="${symptompoll}">
+								<td th:text="${symppoll.sympollId}"></td>
+								<td th:text="${symppoll.sympollName}"></td>
 								<td th:text="${symppoll.sympollEnddate}"></td>
 								<td th:text="${symppoll.sympollStartdate}"></td>
 								
-								<td><a th:href="@{/user/symptompoll/edit/{id}(id=${symppoll.symppollId})}"
+								<td><a
+									th:href="@{/user/symptompoll/showInstitution/{id}(id=${symppoll.instInstId})}">Institution
+								</a></td>
+								
+								<td><a th:href="@{/user/symptompoll/edit/{id}(id=${symppoll.sympollId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
-								<td><a th:href="@{/user/symptompoll/del/{id}(id=${symppoll.symppollId})}"
+								<td><a th:href="@{/user/symptompoll/del/{id}(id=${symppoll.sympollId})}"
 									class="btn btn-primary"> <i class="fas fa-user-times"></i>
 								</a></td>
 							</tr>
@@ -53,11 +55,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-<<<<<<< HEAD
-					<a href="/user/Symptompoll/add-symptompoll" class="btn btn-primary"><i
-=======
-					<a href="/user/symptompoll/add-Symptompoll" class="btn btn-primary"><i
->>>>>>> c2884e31a2e37975d7839694e70e448de32bee26
+					<a href="/user/symptompoll/add-symptompoll" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>

@@ -16,36 +16,40 @@
 <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-	<div class="container my-5" th:switch="${#lists.size(Symptomquestion)}">
+	<div class="container my-5" th:switch="${#lists.size(symptomquestion)}">
 		<div class="row">
 			<div class="col-md-10">
 				<h2 th:case="0">La pagina se encuentra vacia</h2>
 				<div th:case="*">
-					<h2 class="my-5">Symptomquestion</h2>
+					<h2 class="my-5">symptomquestion</h2>
 					<table class="table table-striped table-responsive-md">
 						<thead>
 							<tr>
 								<th>ID</th>
 								<th>Name</th>
-								<th>Is Active</th>
 								<th>Activation Answer</th>
+								<th>Is Active</th>
 								<th>Weight</th>
 								<th>Edit</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="sympques : ${Symptomquestion}" th:value="${Symptomquestion}">
-								<td th:text="${sympques.sympquesId}"></td>
-								<td th:text="${sympques.sympquesName}"></td>
-								<td th:text="${sympques.sympquesIsactive}"></td>
-								<td th:text="${sympques.sympquesActivationanswer}"></td>
-								<td th:text="${sympques.sympquesWeight}"></td>
+							<tr th:each="symptomques : ${symptomquestion}" th:value="${symptomquestion}">
+								<td th:text="${symptomques.sympquesId}"></td>
+								<td th:text="${symptomques.sympquesName}"></td>
+								<td th:text="${symptomques.sympquesActivationanswer}"></td>
+								<td th:text="${symptomquestion.sympquesIsactive}"></td>
+								<td th:text="${symptomquestion.sympquesWeight}"></td>
 								
-								<td><a th:href="@{/user/symptompoll/edit/{id}(id=${sympques.sympquesId})}"
+								<td><a
+									th:href="@{/user/symptomquestion/showInstitution/{id}(id=${symptomques.sympquesId})}">Institution
+								</a></td>
+								
+								<td><a th:href="@{/user/symptomquestion/edit/{id}(id=${symptomques.sympquesId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
-								<td><a th:href="@{/user/symptompoll/del/{id}(id=${sympques.sympquesId})}"
+								<td><a th:href="@{/user/symptomquestion/del/{id}(id=${symptomques.sympquesId})}"
 									class="btn btn-primary"> <i class="fas fa-user-times"></i>
 								</a></td>
 							</tr>
@@ -53,7 +57,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-					<a href="/user/symptomquestion/add-symptomquestionl" class="btn btn-primary"><i
+					<a href="/user/symptomquestion/add-symptomquestion" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>
