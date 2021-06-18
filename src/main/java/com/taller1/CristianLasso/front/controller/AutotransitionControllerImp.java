@@ -25,12 +25,12 @@ import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 public class AutotransitionControllerImp {
 
 	private BusinessDelegateImp businessDel;
-	private FevInstitutionService fevInstitutionService;
+	
 
 	@Autowired
-	public AutotransitionControllerImp(BusinessDelegateImp businessDel, FevInstitutionService fevInstitutionService) {
+	public AutotransitionControllerImp(BusinessDelegateImp businessDel) {
 		this.businessDel = businessDel;
-		this.fevInstitutionService = fevInstitutionService;
+		
 	}
 
 	@GetMapping("/login")
@@ -52,7 +52,7 @@ public class AutotransitionControllerImp {
 	@GetMapping("/autotransition/add-autotransition")
 	public String addAutotransition(Model model, @ModelAttribute("autotransition") Autotransition autotransition) {
 		model.addAttribute("autotransition", new Autotransition());
-		model.addAttribute("fevInstitution", fevInstitutionService.findAll());
+		model.addAttribute("fevInstitution", businessDel.instiFindAll());
 		return "/autotransition/add-autotransition";
 	}
 
@@ -61,7 +61,7 @@ public class AutotransitionControllerImp {
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
 			if (bindingResult.hasErrors()) {
-				model.addAttribute("fevInstitution", fevInstitutionService.findAll());
+				model.addAttribute("fevInstitution", businessDel.instiFindAll());
 				return "autotransition/add-autotransition";
 			} else {
 				businessDel.autotranSave(autotransition);
@@ -76,7 +76,7 @@ public class AutotransitionControllerImp {
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 
 		model.addAttribute("autotransition", autotransition.get());
-		model.addAttribute("fevInstitution", fevInstitutionService.findAll());
+		model.addAttribute("fevInstitution", businessDel.instiFindAll());
 		return "/autotransition/edit-autotransition";
 	}
 
@@ -87,7 +87,7 @@ public class AutotransitionControllerImp {
 		if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("autotransition", autotransition);
-				model.addAttribute("fevInstitution", fevInstitutionService.findAll());
+				model.addAttribute("fevInstitution", businessDel.instiFindAll());
 				return "autotransition/edit-autotransition";
 			}
 			businessDel.autotranEdit(autotransition);
