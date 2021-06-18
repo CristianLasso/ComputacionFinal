@@ -117,6 +117,11 @@ public class LocalconditionServiceImp implements LocalconditionService{
 	public void save(Localcondition localcondition) {
 		localDao.save(localcondition);
 	}
+	
+	@Override
+	public void edit(Localcondition localcondition) {
+		localDao.edit(localcondition);
+	}
 
 	@Override
 	public Localcondition findById(long id) {

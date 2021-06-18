@@ -13,6 +13,8 @@ public interface ThresholdService {
 	
 	public void save(Threshold threshold);
 	
+	public void edit(Threshold threshold);
+	
 	public void delete(Threshold threshold);
 	
 	public Threshold findById(long id);

@@ -91,6 +91,11 @@ public class ThresholdServiceImp implements ThresholdService{
 	public void save(Threshold threshold) {
 		thresDao.save(threshold);
 	}
+	
+	@Override
+	public void edit(Threshold threshold) {
+		thresDao.edit(threshold);
+	}
 
 	@Override
 	public Threshold findById(long id) {

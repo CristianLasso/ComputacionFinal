@@ -7,7 +7,6 @@ import javax.validation.constraints.Size;
 
 import com.taller1.CristianLasso.back.validation.LocalconditionValidation;
 
-
 /**
  * The persistent class for the LOCALCONDITION database table.
  * 

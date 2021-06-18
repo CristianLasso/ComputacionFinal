@@ -17,6 +17,8 @@ public interface AutotransitionService {
 	
 	public void save(Autotransition autotransition);
 	
+	public void edit(Autotransition autotransition);
+	
 	public void delete(Autotransition autotransition);
 	
 	public Autotransition findById(long id);

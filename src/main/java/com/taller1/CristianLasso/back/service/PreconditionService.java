@@ -13,6 +13,8 @@ public interface PreconditionService {
 	
 	public void save(Precondition precondition);
 	
+	public void edit(Precondition precondition);
+	
 	public void delete(Precondition precondition);
 	
 	public Precondition findById(long id);

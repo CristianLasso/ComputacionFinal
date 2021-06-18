@@ -74,6 +74,11 @@ public class PreconditionServiceImp implements PreconditionService{
 	public void save(Precondition precondition) {
 		preconDao.save(precondition);
 	}
+	
+	@Override
+	public void edit(Precondition precondition) {
+		preconDao.edit(precondition);
+	}
 
 	@Override
 	public Precondition findById(long id) {

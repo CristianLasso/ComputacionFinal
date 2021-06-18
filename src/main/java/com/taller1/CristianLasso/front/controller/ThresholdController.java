@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.taller1.CristianLasso.back.model.FevInstitution;
-import com.taller1.CristianLasso.back.model.Threshold;
-import com.taller1.CristianLasso.back.service.FevInstitutionService;
-import com.taller1.CristianLasso.back.service.ThresholdService;
+import com.taller1.CristianLasso.front.model.FevInstitution;
+import com.taller1.CristianLasso.front.model.Threshold;
 import com.taller1.CristianLasso.back.validation.ThresholdValidation;
 import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 
@@ -35,27 +33,28 @@ public class ThresholdController {
 	@GetMapping("/threshold/")
 	public String indexThreshold(Model model) {
 		model.addAttribute("threshold", businessDel.thresFindAll());
-		return "threshold/index";
+		return "/threshold/index";
 	}
 
 	@GetMapping("/threshold/add-threshold")
 	public String addThreshold(Model model, @ModelAttribute("threshold") Threshold threshold) {
 		model.addAttribute("threshold", new Threshold());
 		model.addAttribute("fevInstitution", businessDel.instiFindAll());
-		return "threshold/add-threshold";
+		return "/threshold/add-threshold";
 	}
 
 	@PostMapping("/threshold/add-threshold")
 	public String saveThreshold(@Validated(ThresholdValidation.class) Threshold threshold,
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
-			if (bindingResult.hasErrors()) {
+			/*if (bindingResult.hasErrors()) {
 				model.addAttribute("fevInstitution", businessDel.instiFindAll());
 				return "threshold/add-threshold";
 			} else {
 				businessDel.thresSave(threshold);
-			}
-		return "redirect:/threshold/";
+			}*/
+			businessDel.thresSave(threshold);
+		return "redirect:/user/threshold/";
 	}
 
 	@GetMapping("/threshold/edit/{id}")
@@ -66,29 +65,30 @@ public class ThresholdController {
 
 		model.addAttribute("threshold", thres.get());
 		model.addAttribute("fevInstitution", businessDel.instiFindAll());
-		return "threshold/edit-threshold";
+		return "/threshold/edit-threshold";
 	}
 
 	@PostMapping("/threshold/edit/{id}")
 	public String updateUser(@PathVariable("id") long id,
 			@RequestParam(value = "action", required = true) String action,
 			@Validated(ThresholdValidation.class) Threshold threshold, BindingResult bindingResult, Model model) {
-		if (action != null && !action.equals("Cancel")) {
+		/*if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("threshold", threshold);
 				model.addAttribute("fevInstitution", businessDel.instiFindAll());
 				return "threshold/edit-threshold";
 			}
 			businessDel.thresSave(threshold);
-		}
-		return "redirect:/threshold/";
+		}*/
+		businessDel.thresSave(threshold);
+		return "redirect:/user/threshold/";
 	}
 
 	@GetMapping("/threshold/del/{id}")
 	public String deleteThreshold(@PathVariable("id") long id, Model model) {
 		Threshold thres = businessDel.thresFinById(id);
 		businessDel.thresDelete(thres.getThresId());
-		return "redirect:/threshold/";
+		return "redirect:/user/threshold/";
 	}
 	
 	@GetMapping("/threshold/showInstitution/{id}")
@@ -98,7 +98,7 @@ public class ThresholdController {
         ArrayList<FevInstitution> instis = new ArrayList<FevInstitution>();
         instis.add(inst);
         model.addAttribute("fevInstitution", instis);
-        return "fevInstitution/index";
+        return "/fevInstitution/index";
     }
 
 }

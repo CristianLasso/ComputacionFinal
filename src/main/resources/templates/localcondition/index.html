@@ -19,7 +19,7 @@
 	<div class="container my-5" th:switch="${#lists.size(localcondition)}">
 		<div class="row">
 			<div class="col-md-10">
-				<h2 th:case="0">Paila, no vojabecio</h2>
+				<h2 th:case="0">La pagina se encuentra vacia</h2>
 				<div th:case="*">
 					<h2 class="my-5">Localcondition</h2>
 					<table class="table table-striped table-responsive-md">
@@ -41,10 +41,10 @@
 								<td th:text="${localcondition.loconOperator}"></td>
 								
 								<td><a
-									th:href="@{/user/localcondition/showPrecondition/{id}(id=${localcondition.precondition.preconId})}">Precondition
+									th:href="@{/user/localcondition/showPrecondition/{id}(id=${localcondition.precondition})}">Precondition
 								</a></td>
 								<td><a
-									th:href="@{/user/localcondition/showThreshold/{id}(id=${localcondition.threshold.thresId})}">Threshold
+									th:href="@{/user/localcondition/showThreshold/{id}(id=${localcondition.threshold})}">Threshold
 								</a></td>
 								
 								<td><a th:href="@{/user/localcondition/edit/{id}(id=${localcondition.loconId})}"

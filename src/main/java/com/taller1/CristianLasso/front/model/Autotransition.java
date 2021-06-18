@@ -27,7 +27,7 @@ public class Autotransition implements Serializable {
 
 	private long instInstId;
 
-	@JsonIgnore
+	
 	private List<Precondition> preconditions;
 
 	public Autotransition() {

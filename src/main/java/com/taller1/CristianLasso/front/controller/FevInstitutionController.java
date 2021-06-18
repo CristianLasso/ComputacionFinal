@@ -1,7 +1,5 @@
 package com.taller1.CristianLasso.front.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.taller1.CristianLasso.back.model.FevInstitution;
-import com.taller1.CristianLasso.back.service.FevInstitutionService;
+import com.taller1.CristianLasso.front.model.FevInstitution;
 import com.taller1.CristianLasso.back.validation.FevInstitutionValidation;
 import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 
@@ -33,13 +30,13 @@ public class FevInstitutionController {
 	@GetMapping("/fevInstitution/")
 	public String indexFevInstitution(Model model) {
 		model.addAttribute("fevInstitution", businessDel.instiFindAll());
-		return "fevInstitution/index";
+		return "/fevInstitution/index";
 	}
 	
 	@GetMapping("/fevInstitution/add-fevInstitution")
 	public String addFevInstitution(Model model, @ModelAttribute("fevInstitution") FevInstitution fevInstitution) {
 		model.addAttribute("fevInstitution", new FevInstitution());
-		return "fevInstitution/add-fevInstitution";
+		return "/fevInstitution/add-fevInstitution";
 	}
 	
 	@PostMapping("/fevInstitution/add-fevInstitution")
@@ -47,11 +44,11 @@ public class FevInstitutionController {
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
 			if (bindingResult.hasErrors()) {
-				return "/fevInstitution/add-fevInstitution";
+				return "fevInstitution/add-fevInstitution";
 			} else {
 				businessDel.instiSave(fevInstitution);
 			}
-		return "redirect:/fevInstitution/";
+		return "redirect:/user/fevInstitution/";
 	}
 	
 	@GetMapping("/fevInstitution/edit/{id}")
@@ -61,21 +58,22 @@ public class FevInstitutionController {
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 
 		model.addAttribute("fevInstitution", inst);
-		return "fevInstitution/edit-fevInstitution";
+		return "/fevInstitution/edit-fevInstitution";
 	}
 	
 	@PostMapping("/fevInstitution/edit/{id}")
 	public String updateFevInstitution(@PathVariable("id") long id,
 			@RequestParam(value = "action", required = true) String action,
 			@Validated(FevInstitutionValidation.class) FevInstitution fevInstitution, BindingResult bindingResult, Model model) {
-		if (action != null && !action.equals("Cancel")) {
+		/*if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("fevInstitution", fevInstitution);
 				return "fevInstitution/edit-fevInstitution";
 			}
 			businessDel.instiSave(fevInstitution);
-		}
-		return "redirect:/fevInstitution/";
+		}*/
+		businessDel.instiSave(fevInstitution);
+		return "redirect:/user/fevInstitution/";
 	}
 
 	@GetMapping("/fevInstitution/del/{id}")

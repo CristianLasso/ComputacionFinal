@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.taller1.CristianLasso.back.model.Autotransition;
-import com.taller1.CristianLasso.back.model.FevInstitution;
-import com.taller1.CristianLasso.back.model.Localcondition;
-import com.taller1.CristianLasso.back.model.Precondition;
-import com.taller1.CristianLasso.back.model.Threshold;
+import com.taller1.CristianLasso.front.model.Autotransition;
+import com.taller1.CristianLasso.front.model.FevInstitution;
+import com.taller1.CristianLasso.front.model.Localcondition;
+import com.taller1.CristianLasso.front.model.Precondition;
+import com.taller1.CristianLasso.front.model.Threshold;
 
 @Component
 public class BusinessDelegateImp implements BusinessDelegate{
@@ -30,13 +30,14 @@ public class BusinessDelegateImp implements BusinessDelegate{
 		this.rest = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
+        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
         messageConverters.add(converter);
         this.rest.setMessageConverters(messageConverters);
 	}
 	
 	// --- Autotransition ---
 	
+	@Override
 	public List<Autotransition> autotranFindAll(){
 		String url = URL + "/autotransition/";
 		System.out.println(url);
@@ -45,33 +46,34 @@ public class BusinessDelegateImp implements BusinessDelegate{
 		return result;
 	}
 	
+	@Override
 	public void autotranSave(Autotransition autotran) {
-		String url = URL + "/autotransition/add-autotransition";
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-		url = builder.toUriString();
-		
-		HttpEntity<Autotransition> request = new HttpEntity<>(autotran);
-		rest.postForObject(url, request, Autotransition.class);
+		String url = URL + "/autotransition/";
+		rest.postForObject(url, autotran, Autotransition.class);
 	}
 	
+	@Override
 	public void autotranEdit(Autotransition autotran) {
-		String url = URL + "/autotransition/edit/" + autotran.getAutotranId();
+		String url = URL + "/autotransition/";
 		rest.put(url, autotran, Autotransition.class);
 	}
 	
+	@Override
 	public Autotransition autotranFinById(long id) {
 		String url = URL + "/autotransition/" + id;
 		Autotransition auto = rest.getForObject(url, Autotransition.class);
 		return auto;
 	}
 	
+	@Override
 	public void autotranDelete(long id) {
-		String url = URL + "/users/del/" + id;
+		String url = URL + "/autotransition/del/" + id;
 		rest.delete(url);
 	}
 	
 	// --- FevInstitution ---
 	
+	@Override
 	public List<FevInstitution> instiFindAll(){
 		String url = URL + "/fevInstitution/";
 		System.out.println(url);
@@ -80,26 +82,26 @@ public class BusinessDelegateImp implements BusinessDelegate{
 		return result;
 	}
 	
+	@Override
 	public void instiSave(FevInstitution autotran) {
-		String url = URL + "/fevInstitution/add-fevInstitution";
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-		url = builder.toUriString();
-		
-		HttpEntity<FevInstitution> request = new HttpEntity<>(autotran);
-		rest.postForObject(url, request, FevInstitution.class);
+		String url = URL + "/fevInstitution/";
+		rest.postForObject(url, autotran, FevInstitution.class);
 	}
 	
+	@Override
 	public void instiEdit(FevInstitution autotran) {
-		String url = URL + "/fevInstitution/edit/" + autotran.getInstId();
+		String url = URL + "/fevInstitution/";
 		rest.put(url, autotran, FevInstitution.class);
 	}
 	
+	@Override
 	public FevInstitution instiFinById(long id) {
 		String url = URL + "/fevInstitution/" + id;
 		FevInstitution auto = rest.getForObject(url, FevInstitution.class);
 		return auto;
 	}
 	
+	@Override
 	public void instiDelete(long id) {
 		String url = URL + "/fevInstitution/del/" + id;
 		rest.delete(url);
@@ -107,6 +109,7 @@ public class BusinessDelegateImp implements BusinessDelegate{
 	
 	// --- Localcondition ---
 	
+	@Override
 	public List<Localcondition> localFindAll(){
 		String url = URL + "/localcondition/";
 		System.out.println(url);
@@ -115,26 +118,26 @@ public class BusinessDelegateImp implements BusinessDelegate{
 		return result;
 	}
 	
+	@Override
 	public void localSave(Localcondition autotran) {
-		String url = URL + "/localcondition/add-localcondition";
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-		url = builder.toUriString();
-		
-		HttpEntity<Localcondition> request = new HttpEntity<>(autotran);
-		rest.postForObject(url, request, Localcondition.class);
+		String url = URL + "/localcondition/";
+		rest.postForObject(url, autotran, Localcondition.class);
 	}
 	
+	@Override
 	public void localEdit(Localcondition autotran) {
-		String url = URL + "/localcondition/edit/" + autotran.getLoconId();
+		String url = URL + "/localcondition/";
 		rest.put(url, autotran, Localcondition.class);
 	}
 	
+	@Override
 	public Localcondition localFinById(long id) {
 		String url = URL + "/localcondition/" + id;
 		Localcondition auto = rest.getForObject(url, Localcondition.class);
 		return auto;
 	}
 	
+	@Override
 	public void localDelete(long id) {
 		String url = URL + "/localcondition/del/" + id;
 		rest.delete(url);
@@ -142,6 +145,7 @@ public class BusinessDelegateImp implements BusinessDelegate{
 	
 	// --- Precondition ---
 	
+	@Override
 	public List<Precondition> preconFindAll(){
 		String url = URL + "/precondition/";
 		System.out.println(url);
@@ -150,26 +154,26 @@ public class BusinessDelegateImp implements BusinessDelegate{
 		return result;
 	}
 	
+	@Override
 	public void preconSave(Precondition autotran) {
-		String url = URL + "/precondition/add-precondition";
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-		url = builder.toUriString();
-		
-		HttpEntity<Precondition> request = new HttpEntity<>(autotran);
-		rest.postForObject(url, request, Precondition.class);
+		String url = URL + "/precondition/";
+		rest.postForObject(url, autotran, Precondition.class);
 	}
 	
+	@Override
 	public void preconEdit(Precondition autotran) {
-		String url = URL + "/precondition/edit/" + autotran.getPreconId();
+		String url = URL + "/precondition/";
 		rest.put(url, autotran, Precondition.class);
 	}
 	
+	@Override
 	public Precondition preconFinById(long id) {
 		String url = URL + "/precondition/" + id;
 		Precondition auto = rest.getForObject(url, Precondition.class);
 		return auto;
 	}
 	
+	@Override
 	public void preconDelete(long id) {
 		String url = URL + "/precondition/del/" + id;
 		rest.delete(url);
@@ -177,6 +181,7 @@ public class BusinessDelegateImp implements BusinessDelegate{
 	
 	// --- Threshold ---
 	
+	@Override
 	public List<Threshold> thresFindAll(){
 		String url = URL + "/threshold/";
 		System.out.println(url);
@@ -185,26 +190,26 @@ public class BusinessDelegateImp implements BusinessDelegate{
 		return result;
 	}
 	
+	@Override
 	public void thresSave(Threshold autotran) {
-		String url = URL + "/threshold/add-threshold";
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-		url = builder.toUriString();
-		
-		HttpEntity<Threshold> request = new HttpEntity<>(autotran);
-		rest.postForObject(url, request, Threshold.class);
+		String url = URL + "/threshold/";
+		rest.postForObject(url, autotran, Threshold.class);
 	}
 	
+	@Override
 	public void thresEdit(Threshold autotran) {
-		String url = URL + "/threshold/edit/" + autotran.getThresId();
+		String url = URL + "/threshold/";
 		rest.put(url, autotran, Threshold.class);
 	}
 	
+	@Override
 	public Threshold thresFinById(long id) {
 		String url = URL + "/threshold/" + id;
 		Threshold auto = rest.getForObject(url, Threshold.class);
 		return auto;
 	}
 	
+	@Override
 	public void thresDelete(long id) {
 		String url = URL + "/threshold/del/" + id;
 		rest.delete(url);

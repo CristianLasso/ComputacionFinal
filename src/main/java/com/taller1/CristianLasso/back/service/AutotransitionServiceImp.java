@@ -113,6 +113,11 @@ public class AutotransitionServiceImp implements AutotransitionService{
 	public void save(Autotransition autotransition) {
 		autotranDao.save(autotransition);
 	}
+	
+	@Override
+	public void edit(Autotransition autotransition) {
+		autotranDao.edit(autotransition);
+	}
 
 	@Override
 	public Autotransition findById(long id) {

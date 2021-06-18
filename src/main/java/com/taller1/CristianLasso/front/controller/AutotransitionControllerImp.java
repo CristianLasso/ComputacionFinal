@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.taller1.CristianLasso.front.model.Autotransition;
 import com.taller1.CristianLasso.front.model.FevInstitution;
+import com.taller1.CristianLasso.back.service.FevInstitutionService;
 import com.taller1.CristianLasso.back.validation.AutotransitionValidation;
 import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 
@@ -23,10 +24,12 @@ import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 public class AutotransitionControllerImp {
 
 	private BusinessDelegateImp businessDel;
+	private FevInstitutionService fevInstitutionService;
 
 	@Autowired
-	public AutotransitionControllerImp(BusinessDelegateImp businessDel) {
+	public AutotransitionControllerImp(BusinessDelegateImp businessDel, FevInstitutionService fevInstitutionService) {
 		this.businessDel = businessDel;
+		this.fevInstitutionService = fevInstitutionService;
 	}
 
 	@GetMapping("/login")
@@ -48,8 +51,8 @@ public class AutotransitionControllerImp {
 	@GetMapping("/autotransition/add-autotransition")
 	public String addAutotransition(Model model, @ModelAttribute("autotransition") Autotransition autotransition) {
 		model.addAttribute("autotransition", new Autotransition());
-		model.addAttribute("fevInstitution", businessDel.instiFindAll());
-		return "autotransition/add-autotransition";
+		model.addAttribute("fevInstitution", fevInstitutionService.findAll());
+		return "/autotransition/add-autotransition";
 	}
 
 	@PostMapping("/autotransition/add-autotransition")
@@ -57,12 +60,12 @@ public class AutotransitionControllerImp {
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
 			if (bindingResult.hasErrors()) {
-				model.addAttribute("fevInstitution", businessDel.instiFindAll());
+				model.addAttribute("fevInstitution", fevInstitutionService.findAll());
 				return "autotransition/add-autotransition";
 			} else {
 				businessDel.autotranSave(autotransition);
 			}
-		return "redirect:/autotransition/";
+		return "redirect:/user/autotransition/";
 	}
 
 	@GetMapping("/autotransition/edit/{id}")
@@ -72,30 +75,30 @@ public class AutotransitionControllerImp {
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 
 		model.addAttribute("autotransition", autotransition.get());
-		model.addAttribute("fevInstitution", businessDel.instiFindAll());
-		return "autotransition/edit-autotransition";
+		model.addAttribute("fevInstitution", fevInstitutionService.findAll());
+		return "/autotransition/edit-autotransition";
 	}
 
 	@PostMapping("/autotransition/edit/{id}")
 	public String updateUser(@PathVariable("id") long id,
 			@RequestParam(value = "action", required = true) String action,
 			@Validated(AutotransitionValidation.class) Autotransition autotransition, BindingResult bindingResult, Model model) {
-		if (action != null && !action.equals("Cancel")) {
+		/*if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("autotransition", autotransition);
-				model.addAttribute("fevInstitution", businessDel.instiFindAll());
+				model.addAttribute("fevInstitution", fevInstitutionService.findAll());
 				return "autotransition/edit-autotransition";
 			}
 			businessDel.autotranEdit(autotransition);
-		}
-		return "redirect:/autotransition/";
+		}*/
+		businessDel.autotranEdit(autotransition);
+		return "redirect:/user/autotransition/";
 	}
 
-	@GetMapping("/users/del/{id}")
+	@GetMapping("/autotransition/del/{id}")
 	public String deleteUser(@PathVariable("id") long id, Model model) {
-		Autotransition autotran = businessDel.autotranFinById(id);
-		businessDel.autotranDelete(autotran.getAutotranId());
-		return "redirect:/autotransition/";
+		businessDel.autotranDelete(id);
+		return "redirect:/user/autotransition/";
 	}
 	
 	@GetMapping("/autotransition/showInstitution/{id}")
@@ -105,7 +108,7 @@ public class AutotransitionControllerImp {
         ArrayList<FevInstitution> instis = new ArrayList<FevInstitution>();
         instis.add(inst);
         model.addAttribute("fevInstitution", instis);
-        return "fevInstitution/index";
+        return "/fevInstitution/index";
     }
 	
 }

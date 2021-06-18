@@ -32,9 +32,9 @@ public class Taller1Application {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Taller1Application.class, args);
-		/*ApplicationContext app = SpringApplication.run(Taller1Application.class, args);
-		BusinessDelegateImp businessDel = app.getBean(BusinessDelegateImp.class);*/
+		//SpringApplication.run(Taller1Application.class, args);
+		ApplicationContext app = SpringApplication.run(Taller1Application.class, args);
+		BusinessDelegateImp businessDel = app.getBean(BusinessDelegateImp.class);
 	}
 	
 	
@@ -67,7 +67,7 @@ public class Taller1Application {
 			
 			Precondition precon = new Precondition();
 			precon.setPreconLogicaloperand("OR");
-			precon.setAutotransition(autotran);
+			//precon.setAutotransition(autotran);
 			preconService.save(precon);
 			
 			Threshold thres = new Threshold();
@@ -79,8 +79,8 @@ public class Taller1Application {
 			Localcondition local = new Localcondition();
 			local.setLoconOperator("==");
 			local.setLoconTablename("Local");
-			local.setPrecondition(precon);
-			local.setThreshold(thres);
+			//local.setPrecondition(precon);
+			//local.setThreshold(thres);
 			localService.save(local);
 
 		};

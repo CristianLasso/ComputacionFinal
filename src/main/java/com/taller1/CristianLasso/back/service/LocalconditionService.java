@@ -17,6 +17,8 @@ public interface LocalconditionService {
 	
 	public void save(Localcondition localcondition);
 	
+	public void edit(Localcondition localcondition);
+	
 	public void delete(Localcondition localcondition);
 	
 	public Localcondition findById(long id);
