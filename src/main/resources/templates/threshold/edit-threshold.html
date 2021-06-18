@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<form action="#"
-					th:action="@{/threshold/edit/{id}(id=${threshold.thresId})}"
+					th:action="@{/user/threshold/edit/{id}(id=${threshold.thresId})}"
 					th:object="${threshold}" method="post">
 					<div class="row">
 						<input type="hidden" th:field="*{thresId}" class="form-control" id="id"

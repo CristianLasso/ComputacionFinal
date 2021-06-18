@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.taller1.CristianLasso.back.model.Autotransition;
-import com.taller1.CristianLasso.back.model.FevInstitution;
-import com.taller1.CristianLasso.back.service.FevInstitutionService;
+import com.taller1.CristianLasso.front.model.Autotransition;
+import com.taller1.CristianLasso.front.model.FevInstitution;
 import com.taller1.CristianLasso.back.validation.AutotransitionValidation;
 import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 

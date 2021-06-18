@@ -21,33 +21,30 @@ import com.taller1.CristianLasso.back.service.LocalconditionService;
 import com.taller1.CristianLasso.back.service.PreconditionService;
 import com.taller1.CristianLasso.back.service.ThresholdService;
 import com.taller1.CristianLasso.back.validation.LocalconditionValidation;
+import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 
 @Controller
 @RequestMapping("/user")
 public class LocalconditionController {
 
-	private LocalconditionService localconService;
-	private ThresholdService thresService;
-	private PreconditionService preconService;
+	private BusinessDelegateImp businessDel;
 	
 	@Autowired
-	public LocalconditionController(LocalconditionService localcon, ThresholdService thres, PreconditionService precon) {
-		this.localconService = localcon;
-		this.thresService = thres;
-		this.preconService = precon;
+	public LocalconditionController(BusinessDelegateImp businessDel) {
+		this.businessDel = businessDel;
 	}
 	
 	@GetMapping("/localcondition/")
 	public String indexLocalcondition(Model model) {
-		model.addAttribute("localcondition", localconService.findAll());
+		model.addAttribute("localcondition", businessDel.localFindAll());
 		return "localcondition/index";
 	}
 	
 	@GetMapping("/localcondition/add-localcondition")
 	public String addLocalcondition(Model model, @ModelAttribute("localcondition") Localcondition localcondition) {
 		model.addAttribute("localcondition", new Localcondition());
-		model.addAttribute("threshold", thresService.findAll());
-		model.addAttribute("precondition", preconService.findAll());
+		model.addAttribute("threshold", businessDel.thresFindAll());
+		model.addAttribute("precondition", businessDel.preconFindAll());
 		return "localcondition/add-localcondition";
 	}
 	
@@ -56,24 +53,24 @@ public class LocalconditionController {
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
 			if (bindingResult.hasErrors()) {
-				model.addAttribute("threshold", thresService.findAll());
-				model.addAttribute("precondition", preconService.findAll());
+				model.addAttribute("threshold", businessDel.thresFindAll());
+				model.addAttribute("precondition", businessDel.preconFindAll());
 				return "/localcondition/add-localcondition";
 			} else {
-				localconService.save(localcondition);
+				businessDel.localSave(localcondition);
 			}
 		return "redirect:/localcondition/";
 	}
 	
 	@GetMapping("/localcondition/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
-		Localcondition local = localconService.findById(id);
+		Localcondition local = businessDel.localFinById(id);
 		if (local == null)
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 
 		model.addAttribute("localcondition", local.get());
-		model.addAttribute("threshold", thresService.findAll());
-		model.addAttribute("precondition", preconService.findAll());
+		model.addAttribute("threshold", businessDel.thresFindAll());
+		model.addAttribute("precondition", businessDel.preconFindAll());
 		return "localcondition/edit-localcondition";
 	}
 	
@@ -84,25 +81,25 @@ public class LocalconditionController {
 		if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("localcondition", localcondition);
-				model.addAttribute("threshold", thresService.findAll());
-				model.addAttribute("precondition", preconService.findAll());
+				model.addAttribute("threshold", businessDel.thresFindAll());
+				model.addAttribute("precondition", businessDel.preconFindAll());
 				return "localcondition/edit-localcondition";
 			}
-			localconService.save(localcondition);
+			businessDel.localSave(localcondition);
 		}
 		return "redirect:/localcondition/";
 	}
 
 	@GetMapping("/localcondition/del/{id}")
 	public String deleteLocalcondition(@PathVariable("id") long id, Model model) {
-		Localcondition local = localconService.findById(id);
-		localconService.delete(local);
+		Localcondition local = businessDel.localFinById(id);
+		businessDel.localDelete(local.getLoconId());
 		return "redirect:/localcondition/";
 	}
 	
 	@GetMapping("/localcondition/showPrecondition/{id}")
     public String showPrecondition(@PathVariable("id") long id, Model model) {
-		Localcondition localcon = localconService.findById(id).get();
+		Localcondition localcon = businessDel.localFinById(id).get();
 		Precondition precon = localcon.getPrecondition();
         ArrayList<Precondition> precons = new ArrayList<Precondition>();
         precons.add(precon);
@@ -112,7 +109,7 @@ public class LocalconditionController {
 	
 	@GetMapping("/localcondition/showThreshold/{id}")
     public String showThreshold(@PathVariable("id") long id, Model model) {
-		Localcondition localcon = localconService.findById(id).get();
+		Localcondition localcon = businessDel.localFinById(id).get();
 		Threshold thres = localcon.getThreshold();
         ArrayList<Threshold> threses = new ArrayList<Threshold>();
         threses.add(thres);

@@ -17,21 +17,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.taller1.CristianLasso.back.model.FevInstitution;
 import com.taller1.CristianLasso.back.service.FevInstitutionService;
 import com.taller1.CristianLasso.back.validation.FevInstitutionValidation;
+import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 
 @Controller
 @RequestMapping("/user")
 public class FevInstitutionController {
 	
-	private FevInstitutionService instService;
+	private BusinessDelegateImp businessDel;
 	
 	@Autowired
-	public FevInstitutionController(FevInstitutionService instService) {
-		this.instService = instService;
+	public FevInstitutionController(BusinessDelegateImp businessDel) {
+		this.businessDel = businessDel;
 	}
 	
 	@GetMapping("/fevInstitution/")
 	public String indexFevInstitution(Model model) {
-		model.addAttribute("fevInstitution", instService.findAll());
+		model.addAttribute("fevInstitution", businessDel.instiFindAll());
 		return "fevInstitution/index";
 	}
 	
@@ -48,18 +49,18 @@ public class FevInstitutionController {
 			if (bindingResult.hasErrors()) {
 				return "/fevInstitution/add-fevInstitution";
 			} else {
-				instService.save(fevInstitution);
+				businessDel.instiSave(fevInstitution);
 			}
 		return "redirect:/fevInstitution/";
 	}
 	
 	@GetMapping("/fevInstitution/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
-		Optional<FevInstitution> inst = instService.findById(id);
+		FevInstitution inst = businessDel.instiFinById(id);
 		if (inst == null)
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 
-		model.addAttribute("fevInstitution", inst.get());
+		model.addAttribute("fevInstitution", inst);
 		return "fevInstitution/edit-fevInstitution";
 	}
 	
@@ -72,16 +73,15 @@ public class FevInstitutionController {
 				model.addAttribute("fevInstitution", fevInstitution);
 				return "fevInstitution/edit-fevInstitution";
 			}
-			instService.save(fevInstitution);
+			businessDel.instiSave(fevInstitution);
 		}
 		return "redirect:/fevInstitution/";
 	}
 
 	@GetMapping("/fevInstitution/del/{id}")
 	public String deleteFevInstitution(@PathVariable("id") long id, Model model) {
-		FevInstitution inst = instService.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-		instService.delete(inst);
+		FevInstitution inst = businessDel.instiFinById(id);
+		businessDel.instiDelete(inst.getInstId());
 		return "redirect:/fevInstitution/";
 	}
 

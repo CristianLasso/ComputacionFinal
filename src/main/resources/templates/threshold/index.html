@@ -40,13 +40,13 @@
 								<td th:text="${threshold.thresValue}"></td>
 								
 								<td><a
-									th:href="@{/threshold/showInstitution/{id}(id=${threshold.instInstId})}">Institution
+									th:href="@{/user/threshold/showInstitution/{id}(id=${threshold.instInstId})}">Institution
 								</a></td>
 								
-								<td><a th:href="@{/threshold/edit/{id}(id=${threshold.thresId})}"
+								<td><a th:href="@{/user/threshold/edit/{id}(id=${threshold.thresId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
-								<td><a th:href="@{/threshold/del/{id}(id=${threshold.thresId})}"
+								<td><a th:href="@{/user/threshold/del/{id}(id=${threshold.thresId})}"
 									class="btn btn-primary"> <i class="fas fa-user-times"></i>
 								</a></td>
 							</tr>
@@ -54,7 +54,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-					<a href="/threshold/add-threshold" class="btn btn-primary"><i
+					<a href="/user/threshold/add-threshold" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>

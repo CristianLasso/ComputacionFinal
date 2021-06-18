@@ -41,16 +41,16 @@
 								<td th:text="${localcondition.loconOperator}"></td>
 								
 								<td><a
-									th:href="@{/localcondition/showPrecondition/{id}(id=${localcondition.precondition.preconId})}">Precondition
+									th:href="@{/user/localcondition/showPrecondition/{id}(id=${localcondition.precondition.preconId})}">Precondition
 								</a></td>
 								<td><a
-									th:href="@{/localcondition/showThreshold/{id}(id=${localcondition.threshold.thresId})}">Threshold
+									th:href="@{/user/localcondition/showThreshold/{id}(id=${localcondition.threshold.thresId})}">Threshold
 								</a></td>
 								
-								<td><a th:href="@{/localcondition/edit/{id}(id=${localcondition.loconId})}"
+								<td><a th:href="@{/user/localcondition/edit/{id}(id=${localcondition.loconId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
-								<td><a th:href="@{/localcondition/del/{id}(id=${localcondition.loconId})}"
+								<td><a th:href="@{/user/localcondition/del/{id}(id=${localcondition.loconId})}"
 									class="btn btn-primary"> <i class="fas fa-user-times"></i>
 								</a></td>
 							</tr>
@@ -58,7 +58,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-					<a href="/localcondition/add-localcondition" class="btn btn-primary"><i
+					<a href="/user/localcondition/add-localcondition" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>

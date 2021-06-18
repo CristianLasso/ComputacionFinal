@@ -36,10 +36,10 @@
 								<td th:text="${fevInstitution.instId}"></td>
 								<td th:text="${fevInstitution.instName}"></td>
 								
-								<td><a th:href="@{/fevInstitution/edit/{id}(id=${fevInstitution.instId})}"
+								<td><a th:href="@{/user/fevInstitution/edit/{id}(id=${fevInstitution.instId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
-								<td><a th:href="@{/fevInstitution/del/{id}(id=${fevInstitution.instId})}"
+								<td><a th:href="@{/user/fevInstitution/del/{id}(id=${fevInstitution.instId})}"
 									class="btn btn-primary"> <i class="fas fa-user-times"></i>
 								</a></td>
 							</tr>
@@ -47,7 +47,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-					<a href="/fevInstitution/add-fevInstitution" class="btn btn-primary"><i
+					<a href="/user/fevInstitution/add-fevInstitution" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>

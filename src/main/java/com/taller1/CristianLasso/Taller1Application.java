@@ -33,8 +33,7 @@ public class Taller1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Taller1Application.class, args);
-		/*
-		ApplicationContext app = SpringApplication.run(Taller1Application.class, args);
+		/*ApplicationContext app = SpringApplication.run(Taller1Application.class, args);
 		BusinessDelegateImp businessDel = app.getBean(BusinessDelegateImp.class);*/
 	}
 	

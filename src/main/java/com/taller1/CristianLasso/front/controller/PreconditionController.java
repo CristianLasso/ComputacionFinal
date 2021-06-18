@@ -19,30 +19,29 @@ import com.taller1.CristianLasso.back.model.Precondition;
 import com.taller1.CristianLasso.back.service.AutotransitionService;
 import com.taller1.CristianLasso.back.service.PreconditionService;
 import com.taller1.CristianLasso.back.validation.PreconditionValidation;
+import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 
 @Controller
 @RequestMapping("/user")
 public class PreconditionController {
 	
-	private PreconditionService preconService;
-	private AutotransitionService autotranService;
+	private BusinessDelegateImp businessDel;
 	
 	@Autowired
-	public PreconditionController(PreconditionService precon, AutotransitionService autotran) {
-		this.preconService = precon;
-		this.autotranService = autotran;
+	public PreconditionController(BusinessDelegateImp businessDel) {
+		this.businessDel = businessDel;
 	}
 	
 	@GetMapping("/precondition/")
 	public String indexPrecondition(Model model) {
-		model.addAttribute("precondition", preconService.findAll());
+		model.addAttribute("precondition", businessDel.preconFindAll());
 		return "precondition/index";
 	}
 	
 	@GetMapping("/precondition/add-precondition")
 	public String addPrecondition(Model model, @ModelAttribute("precondition") Precondition precondition) {
 		model.addAttribute("precondition", new Precondition());
-		model.addAttribute("autotransition", autotranService.findAll());
+		model.addAttribute("autotransition", businessDel.autotranFindAll());
 		return "precondition/add-precondition";
 	}
 	
@@ -51,22 +50,22 @@ public class PreconditionController {
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
 			if (bindingResult.hasErrors()) {
-				model.addAttribute("autotransition", autotranService.findAll());
+				model.addAttribute("autotransition", businessDel.autotranFindAll());
 				return "precondition/add-precondition";
 			} else {
-				preconService.save(precondition);
+				businessDel.preconSave(precondition);
 			}
 		return "redirect:/precondition/";
 	}
 	
 	@GetMapping("/precondition/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
-		Precondition pre = preconService.findById(id);
+		Precondition pre = businessDel.preconFinById(id);
 		if (pre == null)
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 
 		model.addAttribute("precondition", pre.get());
-		model.addAttribute("autotransition", autotranService.findAll());
+		model.addAttribute("autotransition", businessDel.autotranFindAll());
 		return "precondition/edit-precondition";
 	}
 	
@@ -77,24 +76,24 @@ public class PreconditionController {
 		if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("precondition", precondition);
-				model.addAttribute("autotransition", autotranService.findAll());
+				model.addAttribute("autotransition", businessDel.autotranFindAll());
 				return "precondition/edit-precondition";
 			}
-			preconService.save(precondition);
+			businessDel.preconSave(precondition);
 		}
 		return "redirect:/precondition/";
 	}
 
 	@GetMapping("/precondition/del/{id}")
 	public String deletePrecondition(@PathVariable("id") long id, Model model) {
-		Precondition pre = preconService.findById(id);
-		preconService.delete(pre);
+		Precondition pre = businessDel.preconFinById(id);
+		businessDel.preconDelete(pre.getPreconId());
 		return "redirect:/precondition/";
 	}
 	
 	@GetMapping("/precondition/showAutotransition/{id}")
     public String showAutotransition(@PathVariable("id") long id, Model model) {
-		Precondition precon = preconService.findById(id).get();
+		Precondition precon = businessDel.preconFinById(id).get();
 		Autotransition autotran = precon.getAutotransition();
         ArrayList<Autotransition> autos = new ArrayList<Autotransition>();
         autos.add(autotran);

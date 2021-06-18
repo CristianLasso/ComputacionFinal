@@ -22,7 +22,7 @@ import com.taller1.CristianLasso.back.model.Threshold;
 @Component
 public class BusinessDelegateImp implements BusinessDelegate{
 
-	public static final String URL = "http//localhost:8080/admin";
+	public static final String URL = "http://localhost:8080/admin";
 	
 	private RestTemplate rest;
 	
@@ -33,7 +33,6 @@ public class BusinessDelegateImp implements BusinessDelegate{
         converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
         messageConverters.add(converter);
         this.rest.setMessageConverters(messageConverters);
-		
 	}
 	
 	// --- Autotransition ---

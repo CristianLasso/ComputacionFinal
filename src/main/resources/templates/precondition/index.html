@@ -38,12 +38,12 @@
 								<td th:text="${precondition.preconLogicaloperand}"></td>
 								
 								<td><a
-									th:href="@{/precondition/showAutotransition/{id}(id=${precondition.autotransition.autotranId})}">Autotransition
+									th:href="@{/user/precondition/showAutotransition/{id}(id=${precondition.autotransition.autotranId})}">Autotransition
 								</a></td>
-								<td><a th:href="@{/precondition/edit/{id}(id=${precondition.preconId})}"
+								<td><a th:href="@{/user/precondition/edit/{id}(id=${precondition.preconId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
-								<td><a th:href="@{/precondition/del/{id}(id=${precondition.preconId})}"
+								<td><a th:href="@{/user/precondition/del/{id}(id=${precondition.preconId})}"
 									class="btn btn-primary"> <i class="fas fa-user-times"></i>
 								</a></td>
 							</tr>
@@ -51,7 +51,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-					<a href="/precondition/add-precondition" class="btn btn-primary"><i
+					<a href="/user/precondition/add-precondition" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>

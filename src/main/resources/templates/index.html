@@ -21,25 +21,25 @@
 			<div class="col-md-6">
 				<h2 th:case="null">Main Page</h2>
 				<p>
-				<div sec:authorize="hasRole('admin')">
+				<div >
 					<a href="/user/autotransition/"><i class="fas fa-calendar ml-2"></i>
 						Autotransition</a>
 					</p>
 				</div>
 
-				<div sec:authorize="hasRole('operator')">
+				<div >
 					<p>
 						<a href="/user/localcondition/"><i class="fas fa-calendar ml-2"></i>
 							Localcondition</a>
 					</p>
 				</div>
-				<div sec:authorize="hasRole('operator')">
+				<div >
 					<p>
 						<a href="/user/precondition/"><i class="fas fa-calendar ml-2"></i>
 							Precondition</a>
 					</p>
 				</div>
-				<div sec:authorize="hasRole('operator')">
+				<div >
 					<p>
 						<a href="/user/threshold/"><i class="fas fa-calendar ml-2"></i> 
 							Threshold</a>

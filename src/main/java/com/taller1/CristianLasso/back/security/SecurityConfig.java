@@ -14,12 +14,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.authorizeRequests().antMatchers("/user/login**").permitAll().antMatchers("/user/autotransition/**", "/user/fevInstitution/**")
+		/*httpSecurity.authorizeRequests().antMatchers("/user/login**").permitAll().antMatchers("/user/autotransition/**", "/user/fevInstitution/**")
 				.hasRole("admin").antMatchers("/user/localcondition/**", "/user/precondition/**", "/user/threshold/**", "/user/fevInstitution/**")
 				.hasAnyRole("operator").anyRequest().authenticated().and().formLogin().loginPage("/user/login").permitAll()
 				.and().logout().invalidateHttpSession(true).clearAuthentication(true)
 				.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")).logoutSuccessUrl("/user/login?logout")
-				.permitAll().and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+				.permitAll().and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);*/
 
 		
 	}

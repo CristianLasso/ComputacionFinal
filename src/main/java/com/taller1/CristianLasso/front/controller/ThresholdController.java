@@ -19,30 +19,29 @@ import com.taller1.CristianLasso.back.model.Threshold;
 import com.taller1.CristianLasso.back.service.FevInstitutionService;
 import com.taller1.CristianLasso.back.service.ThresholdService;
 import com.taller1.CristianLasso.back.validation.ThresholdValidation;
+import com.taller1.CristianLasso.front.businessdele.BusinessDelegateImp;
 
 @Controller
 @RequestMapping("/user")
 public class ThresholdController {
 	
-	private ThresholdService thresService;
-	private FevInstitutionService instService;
+	private BusinessDelegateImp businessDel;;
 	
 	@Autowired
-	public ThresholdController(ThresholdService thresService, FevInstitutionService instService) {
-		this.thresService = thresService;
-		this.instService = instService;
+	public ThresholdController(BusinessDelegateImp businessDel) {
+		this.businessDel = businessDel;
 	}
 	
 	@GetMapping("/threshold/")
 	public String indexThreshold(Model model) {
-		model.addAttribute("threshold", thresService.findAll());
+		model.addAttribute("threshold", businessDel.thresFindAll());
 		return "threshold/index";
 	}
 
 	@GetMapping("/threshold/add-threshold")
 	public String addThreshold(Model model, @ModelAttribute("threshold") Threshold threshold) {
 		model.addAttribute("threshold", new Threshold());
-		model.addAttribute("fevInstitution", instService.findAll());
+		model.addAttribute("fevInstitution", businessDel.instiFindAll());
 		return "threshold/add-threshold";
 	}
 
@@ -51,22 +50,22 @@ public class ThresholdController {
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
 		if (!action.equals("Cancel"))
 			if (bindingResult.hasErrors()) {
-				model.addAttribute("fevInstitution", instService.findAll());
+				model.addAttribute("fevInstitution", businessDel.instiFindAll());
 				return "threshold/add-threshold";
 			} else {
-				thresService.save(threshold);
+				businessDel.thresSave(threshold);
 			}
 		return "redirect:/threshold/";
 	}
 
 	@GetMapping("/threshold/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
-		Threshold thres = thresService.findById(id);
+		Threshold thres = businessDel.thresFinById(id);
 		if (thres == null)
 			throw new IllegalArgumentException("Invalid user Id:" + id);
 
 		model.addAttribute("threshold", thres.get());
-		model.addAttribute("fevInstitution", instService.findAll());
+		model.addAttribute("fevInstitution", businessDel.instiFindAll());
 		return "threshold/edit-threshold";
 	}
 
@@ -77,25 +76,25 @@ public class ThresholdController {
 		if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("threshold", threshold);
-				model.addAttribute("fevInstitution", instService.findAll());
+				model.addAttribute("fevInstitution", businessDel.instiFindAll());
 				return "threshold/edit-threshold";
 			}
-			thresService.save(threshold);
+			businessDel.thresSave(threshold);
 		}
 		return "redirect:/threshold/";
 	}
 
 	@GetMapping("/threshold/del/{id}")
 	public String deleteThreshold(@PathVariable("id") long id, Model model) {
-		Threshold thres = thresService.findById(id);
-		thresService.delete(thres);
+		Threshold thres = businessDel.thresFinById(id);
+		businessDel.thresDelete(thres.getThresId());
 		return "redirect:/threshold/";
 	}
 	
 	@GetMapping("/threshold/showInstitution/{id}")
     public String showInstitution(@PathVariable("id") long id, Model model) {
-		Threshold thres = thresService.findById(id).get();
-		FevInstitution inst = instService.findById(thres.getInstInstId()).get();
+		Threshold thres = businessDel.thresFinById(id).get();
+		FevInstitution inst = businessDel.instiFinById(thres.getInstInstId());
         ArrayList<FevInstitution> instis = new ArrayList<FevInstitution>();
         instis.add(inst);
         model.addAttribute("fevInstitution", instis);
