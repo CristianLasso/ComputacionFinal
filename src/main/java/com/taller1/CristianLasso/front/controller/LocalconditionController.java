@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -48,8 +49,8 @@ public class LocalconditionController {
 	@PostMapping("/localcondition/add-localcondition")
 	public String saveLocalcondition(@Validated(LocalconditionValidation.class) Localcondition localcondition,
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
-		if (!action.equals("Cancel"))
-			/*if (bindingResult.hasErrors()) {
+		/*if (!action.equals("Cancel"))
+			if (bindingResult.hasErrors()) {
 				System.out.println("Tiene errores");
 				model.addAttribute("threshold", businessDel.thresFindAll());
 				model.addAttribute("precondition", businessDel.preconFindAll());
@@ -57,7 +58,7 @@ public class LocalconditionController {
 			} else {
 				businessDel.localSave(localcondition);
 			}*/
-			businessDel.localSave(localcondition);
+		businessDel.localSave(localcondition);
 		return "redirect:/user/localcondition/";
 	}
 	
@@ -86,7 +87,7 @@ public class LocalconditionController {
 			}
 			businessDel.localSave(localcondition);
 		}*/
-			businessDel.localSave(localcondition);
+		businessDel.localSave(localcondition);
 		return "redirect:/user/localcondition/";
 	}
 

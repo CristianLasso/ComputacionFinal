@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -83,15 +84,14 @@ public class AutotransitionControllerImp {
 	public String updateUser(@PathVariable("id") long id,
 			@RequestParam(value = "action", required = true) String action,
 			@Validated(AutotransitionValidation.class) Autotransition autotransition, BindingResult bindingResult, Model model) {
-		/*if (action != null && !action.equals("Cancel")) {
+		if (action != null && !action.equals("Cancel")) {
 			if (bindingResult.hasErrors()) {
 				model.addAttribute("autotransition", autotransition);
 				model.addAttribute("fevInstitution", fevInstitutionService.findAll());
 				return "autotransition/edit-autotransition";
 			}
 			businessDel.autotranEdit(autotransition);
-		}*/
-		businessDel.autotranEdit(autotransition);
+		}
 		return "redirect:/user/autotransition/";
 	}
 
