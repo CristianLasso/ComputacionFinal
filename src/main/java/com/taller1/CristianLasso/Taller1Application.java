@@ -11,6 +11,7 @@ import com.taller1.CristianLasso.back.model.Autotransition;
 import com.taller1.CristianLasso.back.model.FevInstitution;
 import com.taller1.CristianLasso.back.model.Localcondition;
 import com.taller1.CristianLasso.back.model.Precondition;
+import com.taller1.CristianLasso.back.model.Symptom;
 import com.taller1.CristianLasso.back.model.Threshold;
 import com.taller1.CristianLasso.back.model.Userr;
 import com.taller1.CristianLasso.back.model.UserrType;
@@ -18,6 +19,7 @@ import com.taller1.CristianLasso.back.service.AutotransitionService;
 import com.taller1.CristianLasso.back.service.FevInstitutionService;
 import com.taller1.CristianLasso.back.service.LocalconditionService;
 import com.taller1.CristianLasso.back.service.PreconditionService;
+import com.taller1.CristianLasso.back.service.SymptomService;
 import com.taller1.CristianLasso.back.service.ThresholdService;
 import com.taller1.CristianLasso.back.service.UserrService;
 import com.taller1.CristianLasso.front.businessdele.BusinessDelegate;
@@ -40,7 +42,7 @@ public class Taller1Application {
 	
 
 	@Bean
-	public CommandLineRunner dummy(UserrService usService, FevInstitutionService instService, PreconditionService preconService, AutotransitionService autotranService, LocalconditionService localService, ThresholdService thresService) {
+	public CommandLineRunner dummy(UserrService usService, FevInstitutionService instService, PreconditionService preconService, AutotransitionService autotranService, LocalconditionService localService, ThresholdService thresService, SymptomService sympService) {
 		return (args) -> {
 			Userr us1 = new Userr();
 			us1.setUserName("user1");
@@ -82,6 +84,11 @@ public class Taller1Application {
 			//local.setPrecondition(precon);
 			//local.setThreshold(thres);
 			localService.save(local);
+			
+			Symptom symp = new Symptom();
+			symp.setSympName("Symptom");
+			symp.setSympIsactive("Y");
+			sympService.save(symp);
 
 		};
 	}

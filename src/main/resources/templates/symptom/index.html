@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="../css/shards.min.css">
 </head>
 <body>
-	<div class="container my-5" th:switch="${#lists.size(Symptom)}">
+	<div class="container my-5" th:switch="${#lists.size(symptom)}">
 		<div class="row">
 			<div class="col-md-10">
 				<h2 th:case="0">La pagina se encuentra vacia</h2>
@@ -38,14 +38,11 @@
 								<td th:text="${symp.sympName}"></td>
 								<td th:text="${symp.sympIsactive}"></td>
 								
-								<td><a
-									th:href="@{/user/Symptom/showInstitution/{id}(id=${symp.instInstId})}">Institution
-								</a></td>
 								
-								<td><a th:href="@{/user/Symptom/edit/{id}(id=${symp.sympId})}"
+								<td><a th:href="@{/user/symptom/edit/{id}(id=${symp.sympId})}"
 									class="btn btn-primary"> <i class="fas fa-user-edit"></i>
 								</a></td>
-								<td><a th:href="@{/user/Symptom/del/{id}(id=${symp.sympId})}"
+								<td><a th:href="@{/user/symptom/del/{id}(id=${symp.sympId})}"
 									class="btn btn-primary"> <i class="fas fa-user-times"></i>
 								</a></td>
 							</tr>
@@ -53,7 +50,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-					<a href="/user/Symptom/add-Symptom" class="btn btn-primary"><i
+					<a href="/user/symptom/add-symptom" class="btn btn-primary"><i
 						class="fas fa-user-plus ml-2"></i></a>
 				</p>
 			</div>

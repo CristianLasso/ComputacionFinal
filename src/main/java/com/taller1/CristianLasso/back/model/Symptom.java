@@ -2,6 +2,12 @@ package com.taller1.CristianLasso.back.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.taller1.CristianLasso.back.validation.AutotransitionValidation;
+import com.taller1.CristianLasso.back.validation.SymptomValidation;
+
 import java.util.List;
 
 
@@ -23,6 +29,8 @@ public class Symptom implements Serializable {
 	@Column(name="SYMP_ISACTIVE")
 	private String sympIsactive;
 
+	@NotNull(groups = {AutotransitionValidation.class})
+	@Size(min = 4, max = 30, groups = { SymptomValidation.class})
 	@Column(name="SYMP_NAME")
 	private String sympName;
 

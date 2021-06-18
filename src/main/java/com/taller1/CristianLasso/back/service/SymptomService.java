@@ -17,6 +17,8 @@ public interface SymptomService {
 	
 	public void save(Symptom symptom);
 	
+	public void update(Symptom symptom);
+	
 	public void delete(Symptom symptom);
 	
 	public Symptom findById(long id);

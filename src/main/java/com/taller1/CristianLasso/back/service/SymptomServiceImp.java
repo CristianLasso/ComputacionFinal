@@ -1,6 +1,7 @@
 package com.taller1.CristianLasso.back.service;
 
 
+import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,11 @@ public class SymptomServiceImp implements SymptomService{
 	public void save(Symptom symptom) {
 		// TODO Auto-generated method stub
 		symptomDao.save(symptom);
+	}
+	
+	@Override
+	public void update(Symptom symptom) {
+		symptomDao.update(symptom);
 	}
 
 	@Override

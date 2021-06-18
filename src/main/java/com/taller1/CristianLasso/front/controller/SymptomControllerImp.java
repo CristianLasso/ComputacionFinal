@@ -31,11 +31,13 @@ public class SymptomControllerImp {
 	@GetMapping("/symptom/")
 	public String indexSymptom(Model model) {
 		model.addAttribute("symptom", businessDel.symptomFindAll());
+		System.out.println("Symptoms: " + businessDel.symptomFindAll());
 		return "/symptom/index";
 	}
 
 	@GetMapping("/symptom/add-symptom")
 	public String addSymptomn(Model model, @ModelAttribute("symptom") Symptom Symptom) {
+		System.out.println("Entra al add");
 		model.addAttribute("symptom", new Symptom());
 		return "/symptom/add-symptom";
 	}
@@ -43,6 +45,7 @@ public class SymptomControllerImp {
 	@PostMapping("/symptom/add-symptom")
 	public String saveSymptom(@Validated(SymptomValidation.class) Symptom symptom,
 			BindingResult bindingResult, @RequestParam(value = "action", required = true) String action, Model model) {
+		System.out.println("Entra al segundo add");
 		if (!action.equals("Cancel"))
 			if (bindingResult.hasErrors()) {
 				return "symptom/add-symptom";
